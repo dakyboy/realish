@@ -7,7 +7,7 @@ function covid19ImpactEstimator($data)
   $impact = array("woood");
   $severeImpact = array();
   $output = array("data" => $input,"impact" => $impact,"severeImpact"=> $severeImpact);
-  return json_encode($output);
+  return ($output);
 }
 
 #Functions
