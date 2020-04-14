@@ -3,7 +3,10 @@
 $appName = "novelty COVID-19 infections estimator";
 function covid19ImpactEstimator($data)
 {
-  return $data;
+  $impact = "";
+  $severeImpact = "";
+  $output = array($data, $impact, $severeImpact);
+  return json_encode($output);
 }
 
 #Functions
@@ -12,20 +15,9 @@ function calculateCurrentlyInfected () {
 
 }
 
-$africaData ='{
-  region: {
-  name: "Africa",
-  avgAge: 19.7,
-  avgDailyIncomeInUSD: 5,
-  avgDailyIncomePopulation: 0.71
-  },
-  periodType: "days",
-  timeToElapse: 58,
-  reportedCases: 674,
-  population: 66622705,
-  totalHospitalBeds: 1380614
-  }';
-
+$africaData = '{"region": {"name": Africa, "avgAge": 19.7, "avgDailyIncomeInUSD": 5, "avgDailyIncomePopulation": 0.71 }, "periodType": "days", "timeToElapse": 58, "reportedCases": 674, "population": 66622705, "totalHospitalBeds": 1380614}';
+$africaData_1 = '{"periodType":"days", "timeToElapse": 58, "reportedCases": 674, "population": 66622705, "totalHospitalBeds": 1380614}';
+$africaData_2 = '{"region":["name": Africa, "avgAge": 19.7, "avgDailyIncomeInUSD": 5, "avgDailyIncomePopulation": 0.71 ]}';
 
 
 
@@ -39,6 +31,17 @@ $africaData ='{
     private $averageAgeDailyIncomePopulation;
     private $population;
     private $totalHospitalBeds;
+    private $period;
+    private $periodType;
+    private $currentlyInfected;
+    private $infectionsByRequestedTime;
+    private $severeCasesByRequestedTime;
+    private $hospitalBedsByRequestedTime;
+    private $casesForICUByRequestedTime;
+    private $casesForVentilatorsByRequestedTime;
+    private $dollarsInFlight;
+    private $impact;
+    private $severeImpact;
 
     function __construct($name, $population)
     {
@@ -89,5 +92,47 @@ $africaData ='{
       $this->totalHospitalBeds = $totalHospitalBeds;
     }
 
+    // Methods
+     function getCurrentlyInfected ($reportedCases) {
+        $impactCurrentlyInfected = $reportedCases * 10;
+        $severeCurrentlyInfected = $reportedCases * 50;
+       echo $impactCurrentlyInfected;
+       echo $severeCurrentlyInfected;
+     }
+
+     function getInfectionsByRequestedTime ($currentlyInfected) {
+      $infectionsByRequestedTime = $currentlyInfected * 2 ^ 10;
+      echo $infectionsByRequestedTime;
+     }
+
+     /*private $population;
+    private $totalHospitalBeds;
+    private $currentlyInfected;
+    private $infectionsByRequestedTime;
+    private $severeCasesByRequestedTime;
+    private $hospitalBedsByRequestedTime;
+    private $casesForICUByRequestedTime;
+    private $casesForVentilatorsByRequestedTime;
+    private $dollarsInFlight;
+    private $impact;
+    private $severeImpact; */
+
+     function getSevereCasesByRequestedTime ($infectionsByRequestedTime) {
+       $severeCasesByRequestedTime = $infectionsByRequestedTime * 0.15;
+       echo $severeCasesByRequestedTime;
+     }
+
+     function getCasesForICUByRequestedTime ($infectionsByRequestedTime) {
+       $casesForICUByRequestedTime = $infectionsByRequestedTime * 0.05;
+       echo $casesForICUByRequestedTime;
+     }
+
+     function getCasesForVentilatorsByRequestedTime ($infectionsByRequestedTime) {
+       $casesForVentilatorsByRequestedTime = $infectionsByRequestedTime * 0.02;
+     }
+
+    //  function getDollarsInFlight ($infectionsByRequestedTime) {
+    //    $dollarsInFlight = ($infectionsByRequestedTime * getAverageDailyIncomePopulation()) * getAverageDailyIncomeInUSD() *
+    //  }
 
   }
