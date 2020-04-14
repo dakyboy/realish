@@ -17,7 +17,7 @@
     </div>
 
     <div class="columns">
-        <div class="column is-one-quarter">
+        <div class="column is-half">
             
                 <div class="field">
                     <label for="population" class="label">Population</label>
@@ -68,9 +68,9 @@
 
     <?php 
         
-    var_dump(json_decode($africaData_1));
-    var_dump(json_decode($africaData_2));
-    
+    // var_dump(json_decode($africaData_1));
+    // var_dump(json_decode($africaData_2));
+    covid19ImpactEstimator($africaData);
     
         
     ?>

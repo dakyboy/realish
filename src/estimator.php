@@ -4,9 +4,9 @@ $appName = "novelty COVID-19 infections estimator";
 function covid19ImpactEstimator($data)
 {
   $input = $data;
-  $impact = array();
+  $impact = array("woood");
   $severeImpact = array();
-  $output = array($input, $impact, $severeImpact);
+  $output = array("data" => $input,"impact" => $impact,"severeImpact"=> $severeImpact);
   return json_encode($output);
 }
 
@@ -19,7 +19,6 @@ function calculateCurrentlyInfected () {
 $africaData = '{"region": {"name": Africa, "avgAge": 19.7, "avgDailyIncomeInUSD": 5, "avgDailyIncomePopulation": 0.71 }, "periodType": "days", "timeToElapse": 58, "reportedCases": 674, "population": 66622705, "totalHospitalBeds": 1380614}';
 $africaData_1 = '{"periodType":"days", "timeToElapse": 58, "reportedCases": 674, "population": 66622705, "totalHospitalBeds": 1380614}';
 $africaData_2 = '{"region":["name": Africa, "avgAge": 19.7, "avgDailyIncomeInUSD": 5, "avgDailyIncomePopulation": 0.71 ]}';
-
 
 
 
