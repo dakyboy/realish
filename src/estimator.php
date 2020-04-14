@@ -4,8 +4,8 @@ $appName = "novelty COVID-19 infections estimator";
 function covid19ImpactEstimator($data)
 {
   $input = $data;
-  $impact = array("woood");
-  $severeImpact = array();
+  $impact = '{}';
+  $severeImpact = '{}';
   $output = array("data" => $input,"impact" => $impact,"severeImpact"=> $severeImpact);
   return ($output);
 }
